@@ -465,12 +465,12 @@ using data available at reservation time — so staff can intervene early.
         rej_col1, rej_col2 = st.columns(2)
         with rej_col1:
             with st.expander("❌ Logistic Regression"):
-                st.write("Assumes mostly linear relationships. Misses complex feature interactions. Weakest Recall (55%) in our tests.")
+                st.write("Assumes mostly linear relationships. Misses complex feature interactions. Weakest Recall (55.87%) in our tests.")
             with st.expander("❌ K-Nearest Neighbors (KNN)"):
                 st.write("Slow prediction on large datasets. Sensitive to scaling & noise. Poor interpretability for business use.")
         with rej_col2:
             with st.expander("❌ Naive Bayes"):
-                st.write("Highest Recall (86%) but Precision only ~50% — half of cancellation flags are false alarms, eroding staff trust.")
+                st.write("Highest Recall (86.59%) but Precision only ~50% — half of cancellation flags are false alarms, eroding staff trust.")
 
     # ── 5. EVALUATION ─────────────────────────────────────────────────────────
     elif chosen == steps[4]:
@@ -479,11 +479,12 @@ using data available at reservation time — so staff can intervene early.
 
         st.markdown("**Model Comparison**")
 
+        # ── Angka diupdate sesuai hasil ipynb ──
         models = [
-            {"name": "Random Forest", "recall": "71.64%", "precision": "77.46%", "f1": "0.744", "acc": "81.67%", "winner": True,  "note": "Best balance of precision & recall → selected for production"},
-            {"name": "KNN",           "recall": "68.48%", "precision": "81.39%", "f1": "0.744", "acc": "82.43%", "winner": False, "note": "Highest precision, but misses more cancellations"},
-            {"name": "Naive Bayes",   "recall": "86.39%", "precision": "49.95%", "f1": "0.633", "acc": "62.68%", "winner": False, "note": "Best recall, but ~50% false alarm rate"},
-            {"name": "Logistic Reg.", "recall": "55.09%", "precision": "80.48%", "f1": "0.654", "acc": "78.29%", "winner": False, "note": "Too conservative — misses nearly half of cancellations"},
+            {"name": "Random Forest", "recall": "70.17%", "precision": "81.65%", "f1": "0.7548", "acc": "83.10%", "winner": True,  "note": "Best balance of precision & recall → selected for production"},
+            {"name": "KNN",           "recall": "68.89%", "precision": "81.32%", "f1": "0.7459", "acc": "82.61%", "winner": False, "note": "High precision, but misses more cancellations than Random Forest"},
+            {"name": "Naive Bayes",   "recall": "86.59%", "precision": "50.04%", "f1": "0.6343", "acc": "63.00%", "winner": False, "note": "Best recall, but ~50% false alarm rate"},
+            {"name": "Logistic Reg.", "recall": "55.87%", "precision": "80.50%", "f1": "0.6596", "acc": "78.63%", "winner": False, "note": "Too conservative — misses nearly half of cancellations"},
         ]
 
         for m in models:
@@ -503,15 +504,15 @@ using data available at reservation time — so staff can intervene early.
         st.markdown("<br>", unsafe_allow_html=True)
         st.markdown("**Final Model Performance — Random Forest**")
         e1, e2, e3, e4 = st.columns(4)
-        e1.metric("Recall",    "71.64%")
-        e2.metric("Precision", "77.46%")
-        e3.metric("F1-Score",  "0.744")
-        e4.metric("Accuracy",  "81.67%")
+        e1.metric("Recall",    "70.17%")
+        e2.metric("Precision", "81.65%")
+        e3.metric("F1-Score",  "0.7548")
+        e4.metric("Accuracy",  "83.10%")
 
         st.markdown("<br>", unsafe_allow_html=True)
         st.info("""
-**Why Random Forest wins:** While Naive Bayes catches more cancellations (86% recall),
-its near-coin-flip precision (50%) means half its alerts are false alarms — eroding staff trust
+**Why Random Forest wins:** While Naive Bayes catches more cancellations (86.59% recall),
+its near-coin-flip precision (50.04%) means half its alerts are false alarms — eroding staff trust
 and wasting retention resources. Random Forest provides a reliable balance hotels can act on confidently.
 
 > 💡 If interventions later shift to low-cost automations (e.g., email-only), Naive Bayes becomes worth revisiting.
@@ -587,6 +588,6 @@ with tab_predict:
     st.markdown("---")
     st.markdown("<p style='text-align:center; color:#475569; font-size:0.85rem;'>Model performance when deployed</p>", unsafe_allow_html=True)
     p1, p2, p3 = st.columns(3)
-    p1.metric("Accuracy",  "81.67%")
-    p2.metric("F1-Score",  "0.744")
-    p3.metric("Recall",    "71.64%")
+    p1.metric("Accuracy",  "83.10%")
+    p2.metric("F1-Score",  "0.7548")
+    p3.metric("Recall",    "70.17%")

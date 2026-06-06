@@ -1,7 +1,12 @@
 import streamlit as st
 import pandas as pd
 import pickle
+import os
+import subprocess
 
+if not os.path.exists("model.pkl"):
+    with st.spinner("⏳ First-time setup: training model (takes ~2 min)…"):
+        subprocess.run(["python", "generate_model.py"], check=True)
 # ── Page config ────────────────────────────────────────────────────────────────
 st.set_page_config(
     page_title="Hotel Booking Cancellation Predictor",

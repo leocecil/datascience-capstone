@@ -97,6 +97,39 @@ h2, h3, h4 { font-family: 'DM Sans', sans-serif !important; font-weight: 600 !im
 }
 [data-baseweb="tab-panel"] { padding-top: 2rem !important; }
 
+/* File Uploader */
+[data-testid="stFileUploader"] button {
+    background: rgba(15, 23, 42, 0.8) !important;
+    color: #f1f5f9 !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    border-radius: 10px !important;
+}
+[data-testid="stFileUploader"] label,
+[data-testid="stFileUploader"] p,
+[data-testid="stFileUploaderDropzoneInstructions"] small,
+[data-testid="stFileUploaderDropzoneInstructions"] span {
+    color: #94a3b8 !important;
+}
+[data-testid="stFileUploaderDropzone"] {
+    background: rgba(255,255,255,0.04) !important;
+    border: 1px dashed rgba(255,255,255,0.2) !important;
+    border-radius: 12px !important;
+}
+            
+/* Download button */
+[data-testid="stDownloadButton"] > button {
+    background: rgba(15, 23, 42, 0.8) !important;
+    color: #f1f5f9 !important;
+    border: 1px solid rgba(56,189,248,0.35) !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+}
+[data-testid="stDownloadButton"] > button:hover {
+    background: rgba(56,189,248,0.15) !important;
+    border-color: rgba(56,189,248,0.6) !important;
+    color: #38bdf8 !important;
+    box-shadow: 0 4px 15px rgba(56,189,248,0.2) !important;
+}
 /* ── Metric cards ── */
 [data-testid="stMetricLabel"]  { color: #94a3b8 !important; font-size: 0.8rem !important; letter-spacing: 0.05em; text-transform: uppercase; }
 [data-testid="stMetricValue"]  { color: #38bdf8 !important; font-size: 2rem !important; font-weight: 700 !important; }
@@ -232,9 +265,16 @@ hr { border-color: rgba(255,255,255,0.1) !important; margin: 2rem 0 !important; 
 /* ── Predict tab ── */
 [data-testid="stNumberInput"] label,
 [data-testid="stSelectbox"] label,
-[data-testid="stSlider"] label {
-    color: #94a3b8 !important; font-size: 0.82rem !important;
-    font-weight: 500 !important; letter-spacing: 0.04em !important; text-transform: uppercase !important;
+[data-testid="stSlider"] [data-testid="stTickBarMin"],
+[data-testid="stSlider"] [data-testid="stTickBarMax"] {
+    color: #f1f5f9 !important;
+}
+/* Also covers the current value tooltip */
+[data-testid="stSlider"] div[role="slider"] {
+    background: #38bdf8 !important;
+}
+[data-testid="stSlider"] p {
+    color: #f1f5f9 !important;
 }
 [data-testid="stNumberInput"] input {
     background: rgba(15, 23, 42, 0.7) !important;

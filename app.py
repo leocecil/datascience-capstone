@@ -492,7 +492,7 @@ using data available at reservation time — so staff can intervene early.
         st.markdown("---")
         st.markdown("**Success Metrics**")
         m1, m2, m3, m4 = st.columns(4)
-        m1.metric("Recall (target)",    "≥ 75%")
+        m1.metric("Recall (target)",    "≥ 70%")
         m2.metric("Precision (target)", "≥ 62%")
         m3.metric("F1-Score (target)",  "≥ 0.68")
         m4.metric("Accuracy (target)",  "≥ 75%")

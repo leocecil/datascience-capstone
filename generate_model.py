@@ -12,7 +12,7 @@ from sklearn.model_selection import train_test_split
 
 # ── 1. LOAD DATA ──────────────────────────────────────────────────────────────
 print("Loading dataset...")
-url = 'https://raw.githubusercontent.com/leocecil/datascience-capstone/refs/heads/main/hotel_bookings.csv'
+url = "https://raw.githubusercontent.com/leocecil/datascience-capstone/main/hotel_bookings.csv"
 df = pd.read_csv(url)
 
 # ── 2. CLEANING ───────────────────────────────────────────────────────────────

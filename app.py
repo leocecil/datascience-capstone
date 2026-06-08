@@ -542,6 +542,28 @@ using data available at reservation time — so staff can intervene early.
         st.markdown("## 🛠 Data Preparation")
         st.markdown("<br>", unsafe_allow_html=True)
 
+        st.markdown("**Cleaning & Transformation Steps**")
+
+        summary_df = pd.DataFrame({
+            "Issue": [
+                "Missing Values", "Duplicate Records", "Data Leakage",
+                "Feature Engineering", "Invalid Records", "Outliers", "Categorical Features"
+            ],
+            "Action": [
+                "Median / 'Unknown' imputation", "Removed", "Dropped leakage columns",
+                "Created new features", "Removed zero-guest rows", "Threshold filtering",
+                "One-Hot Encoding"
+            ],
+            "Why": [
+                "Keep dataset complete", "Avoid repeated observations",
+                "Prevent inflated accuracy", "Increase signal", "Remove impossible bookings",
+                "Reduce noise & skew", "Convert text → numbers"
+            ]
+        })
+        st.table(summary_df)
+
+        st.markdown("---")
+
         # Feature chips
         st.markdown("**Selected Features**")
         st.markdown("""
@@ -565,28 +587,11 @@ using data available at reservation time — so staff can intervene early.
         </p>
         """, unsafe_allow_html=True)
 
-        st.markdown("---")
-        st.markdown("**Cleaning & Transformation Steps**")
-
-        summary_df = pd.DataFrame({
-            "Issue": [
-                "Missing Values", "Duplicate Records", "Data Leakage",
-                "Feature Engineering", "Invalid Records", "Outliers", "Categorical Features"
-            ],
-            "Action": [
-                "Median / 'Unknown' imputation", "Removed", "Dropped leakage columns",
-                "Created new features", "Removed zero-guest rows", "Threshold filtering",
-                "One-Hot Encoding"
-            ],
-            "Why": [
-                "Keep dataset complete", "Avoid repeated observations",
-                "Prevent inflated accuracy", "Increase signal", "Remove impossible bookings",
-                "Reduce noise & skew", "Convert text → numbers"
-            ]
-        })
-        st.table(summary_df)
+        st.image("numerical_features.png", use_container_width=True)
+        st.image("categorical_features.png", use_container_width=True)
 
         st.markdown("---")
+
         st.markdown("**🎯 Target Variable**")
         col_a, col_b = st.columns(2)
         col_a.success("**0** — Booking completed (Not Canceled)")
